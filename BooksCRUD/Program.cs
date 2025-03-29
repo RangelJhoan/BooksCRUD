@@ -1,10 +1,15 @@
 using BooksCRUD.Components;
+using BooksCRUD.Data;
+using BooksCRUD.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
+
+builder.Services.AddDbContext<MyBookContext>();
+builder.Services.AddScoped<IBookService, BookService>();
 
 var app = builder.Build();
 
